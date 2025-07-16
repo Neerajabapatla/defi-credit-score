@@ -23,6 +23,8 @@ The credit scores range from **0 to 1000**. To understand how wallets are distri
 
 A histogram was plotted using these bins to visualize the number of wallets in each band.
 
+![Credit Score Distribution](score_distribution.png)
+
 ### ✅ Observations:
 
 - Most wallets fall within the **400–800** range, suggesting moderate to good behavior.
@@ -58,46 +60,15 @@ To compare behaviors, we analyze key features between wallets with scores:
 - Despite high deposits, they contribute negatively to the protocol.
 - High-score wallets exhibit **more conservative borrowing**, **fewer liquidations**, and a **positive net contribution**.
 
----
-
-## 📊 Visualization Code for Distribution Plot
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-plt.figure(figsize=(10,6))
-sns.histplot(features['credit_score'], bins=10, kde=False)
-plt.title('Distribution of Credit Scores')
-plt.xlabel('Credit Score (0–1000)')
-plt.ylabel('Number of Wallets')
-plt.grid(True)
-plt.show()
-```
+![Behavior Comparison](behavioral_comparison.png)
 
 ---
 
-## 📆 Visualization Code for Behavioral Comparison (Log Scale)
 
-```python
-avg_features.replace(0, 0.01, inplace=True)
-avg_features[avg_features < 0] = 0.01
-
-avg_features.plot(kind='bar', figsize=(12, 6), logy=True)
-plt.title("Behavioral Feature Comparison (Log Scale): Low vs High Score Wallets")
-plt.ylabel("Log Scale: Average Value")
-plt.xticks(rotation=45)
-plt.grid(True, which='both', axis='y', linestyle='--', linewidth=0.5)
-plt.tight_layout()
-plt.show()
-```
 
 ---
 
-## 📁 Related Files
 
-- `wallet_features_with_scores.csv` : Feature vectors with computed credit scores
-- `wallet_scores.json` : Final wallet credit scores
-- `score_distribution.png` : Histogram of score ranges
-- `behavioral_comparison.png` : Log-scaled behavioral feature bar chart
+
+---
 
